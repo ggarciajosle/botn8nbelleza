@@ -40,7 +40,7 @@ const flowConfirm = addKeyword(EVENTS.ACTION).addAction(async (_, { flowDynamic 
 
         clearHistory(state)
         await flowDynamic('😎 ¡Listo! Agendado, espera la llamada de nuestra asistente para confirmar tu cita')
-        await provider.sendText(`5214771109985@s.whatsapp.net`, 'Hay una cita nueva 😎')
+        // await provider.sendText(`5214771109985@s.whatsapp.net`, 'Hay una cita nueva 😎')
 
     })
 
