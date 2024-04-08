@@ -11,7 +11,7 @@ const TIME_ZONE = process.env.TZ
  */
 const flowConfirm = addKeyword(EVENTS.ACTION).addAction(async (_, { flowDynamic }) => {
     await flowDynamic('👍¡Perfecto!, voy a pedirte unos datos para agendar tu cita')
-    await flowDynamic('¿Cual es tu nombre?')
+    await flowDynamic('¿Cual es tu nombre completo?')
 }).addAction({ capture: true }, async (ctx, { state, flowDynamic, endFlow }) => {
 
     if (ctx.body.toLocaleLowerCase().includes('cancelar')) {
@@ -20,7 +20,7 @@ const flowConfirm = addKeyword(EVENTS.ACTION).addAction(async (_, { flowDynamic 
 
     }
     await state.update({ name: ctx.body })
-    await flowDynamic(`Ultima pregunta ¿Cual es tu email?`)
+    await flowDynamic(`Ultima pregunta ¿Cual es el servicio que necesitas?`)
 })
     .addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack }) => {
 
@@ -39,7 +39,7 @@ const flowConfirm = addKeyword(EVENTS.ACTION).addAction(async (_, { flowDynamic 
         await appToCalendar(dateObject)
 
         clearHistory(state)
-        await flowDynamic('Listo! agendado Buen dia')
+        await flowDynamic('😎 ¡Listo! Agendado')
     })
 
 export { flowConfirm }
