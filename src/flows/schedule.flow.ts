@@ -32,7 +32,7 @@ const generatePromptFilter = (history: string) => {
 }
 
 const flowSchedule = addKeyword(EVENTS.ACTION).addAction(async (_, { extensions, state, flowDynamic, endFlow }) => {
-    await flowDynamic('Dame un momento para consultar la agenda...');
+    await flowDynamic('🔎 Dame un momento para consultar la agenda...');
     const ai = extensions.ai as AIClass;
     const history = getHistoryParse(state);
     const list = await getCurrentCalendar()
@@ -56,7 +56,7 @@ const flowSchedule = addKeyword(EVENTS.ACTION).addAction(async (_, { extensions,
     const isDateAvailable = listParse.every(({ fromDate, toDate }) => !isWithinInterval(desiredDate, { start: fromDate, end: toDate }));
 
     if (!isDateAvailable) {
-        const m = 'Lo siento, esa hora ya está reservada. ¿Alguna otra fecha y hora?';
+        const m = '☹️ Lo siento, esa hora ya está reservada. ¿Escribe alguna otra fecha y hora?';
         await flowDynamic(m);
         await handleHistory({ content: m, role: 'assistant' }, state);
         return endFlow()
