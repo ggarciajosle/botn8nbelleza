@@ -10,7 +10,7 @@ const TIME_ZONE = process.env.TZ
  * Encargado de pedir los datos necesarios para registrar el evento en el calendario
  */
 const flowConfirm = addKeyword(EVENTS.ACTION).addAction(async (_, { flowDynamic }) => {
-    await flowDynamic('Ok, voy a pedirte unos datos para agendar')
+    await flowDynamic('👍¡Perfecto!, voy a pedirte unos datos para agendar tu cita')
     await flowDynamic('¿Cual es tu nombre?')
 }).addAction({ capture: true }, async (ctx, { state, flowDynamic, endFlow }) => {
 
