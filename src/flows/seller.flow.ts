@@ -29,6 +29,7 @@ Para proporcionar respuestas más útiles, puedes utilizar la información propo
 - NO ofrescas promociones que no existe en la BASE DE DATOS
 - Finaliza la conversacion con CTA ¿Te gustaria agendar un cita? ¿Quieres reservas una cita?
 - Continua la conversacion sin saludar en primera persona
+- Agrega emojis para que sea mas dinamico el mensaje
 
 Respuesta útil adecuadas para enviar por WhatsApp (en español):`
 
@@ -42,7 +43,7 @@ export const generatePromptSeller = (history: string, database: string) => {
 };
 
 const flowSeller = addKeyword(EVENTS.ACTION)
-    .addAnswer(`⏱️`)
+    .addAnswer(`🕔 Enviando información.... por favor espera`)
     .addAction(async (_, { state, flowDynamic, extensions }) => {
         try {
 
