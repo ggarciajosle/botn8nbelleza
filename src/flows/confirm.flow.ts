@@ -10,7 +10,7 @@ const TIME_ZONE = process.env.TZ
  * Encargado de pedir los datos necesarios para registrar el evento en el calendario
  */
 const flowConfirm = addKeyword(EVENTS.ACTION).addAction(async (_, { flowDynamic }) => {
-    await flowDynamic('👍¡Perfecto!, voy a pedirte unos datos para agendar tu cita')
+    await flowDynamic('👍 ¡Perfecto!, voy a pedirte unos datos para agendar tu cita')
     await flowDynamic('¿Cual es tu nombre completo?')
 }).addAction({ capture: true }, async (ctx, { state, flowDynamic, endFlow }) => {
 
@@ -20,7 +20,7 @@ const flowConfirm = addKeyword(EVENTS.ACTION).addAction(async (_, { flowDynamic 
 
     }
     await state.update({ name: ctx.body })
-    await flowDynamic(`👌 Ultima pregunta ¿Cual es el servicio que necesitas?`)
+    await flowDynamic(`👌 Ultima pregunta ¿Cual es tu email?`)
 })
     .addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack }) => {
 
@@ -39,7 +39,7 @@ const flowConfirm = addKeyword(EVENTS.ACTION).addAction(async (_, { flowDynamic 
         await appToCalendar(dateObject)
 
         clearHistory(state)
-        await flowDynamic('😎 ¡Listo! Agendado')
+        await flowDynamic('😎 ¡Listo! Agendado, espera la llamada de nuestra asistente para confirmar tu cita')
     })
 
 export { flowConfirm }
