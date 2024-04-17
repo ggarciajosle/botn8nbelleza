@@ -22,7 +22,7 @@ const flowConfirm = addKeyword(EVENTS.ACTION).addAction(async (_, { flowDynamic 
     await state.update({ name: ctx.body })
     await flowDynamic(`👌 Ultima pregunta ¿Cual es tu email?`)
 })
-    .addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack, provider.bot.sendMessage }) => {
+    .addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack, provider }) => {
 
         if (!ctx.body.includes('@')) {
             return fallBack(`Debes ingresar un mail correcto`)
