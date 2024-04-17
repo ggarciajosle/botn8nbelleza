@@ -32,7 +32,7 @@ const generatePromptFilter = (history: string) => {
 }
 
 const flowSchedule = addKeyword(EVENTS.ACTION).addAction(async (_, { extensions, state, flowDynamic, endFlow }) => {
-    await flowDynamic('🔎 Dame un momento para consultar la agenda...');
+    await flowDynamic('🔎 Dame un momento para consultar la agenda por favor...');
     const ai = extensions.ai as AIClass;
     const history = getHistoryParse(state);
     const list = await getCurrentCalendar()
