@@ -22,7 +22,7 @@ const flowConfirm = addKeyword(EVENTS.ACTION).addAction(async (_, { flowDynamic 
     await state.update({ name: ctx.body })
     await flowDynamic(`👌 Ultima pregunta ¿Cual es tu email?`)
 })
-    .addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack }) => {
+    .addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack, provider.bot.sendMessage }) => {
 
         if (!ctx.body.includes('@')) {
             return fallBack(`Debes ingresar un mail correcto`)
@@ -40,7 +40,7 @@ const flowConfirm = addKeyword(EVENTS.ACTION).addAction(async (_, { flowDynamic 
 
         clearHistory(state)
         await flowDynamic('😎 ¡Listo! Agendado, espera la llamada de nuestra asistente para confirmar tu cita')
-        //await bot.sendMessage(`5214771109985`, `Hay una cita nueva 😎`, {})
+        await provider.sendText(5214771109985@c.us, "Hay una cita nueva 😎") 
     })
 
 export { flowConfirm }
